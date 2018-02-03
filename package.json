@@ -1,0 +1,30 @@
+{
+  "name": "tstyler",
+  "version": "0.0.1",
+  "description": "TBD",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && npm run fix && npm run check && npm run compile",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
+  },
+  "keywords": [
+    "typescript",
+    "css",
+    "processor",
+    "stylesheet"
+  ],
+  "author": "Federico \"Lox\" Lucignano <federico-lox@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gts": "^0.5.3",
+    "typescript": "~2.6.1",
+    "@types/node": "^9.4.0"
+  }
+}
