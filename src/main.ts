@@ -7,15 +7,44 @@ export enum CSSUnits {
 }
 
 export class Dimension {
-  constructor(private measure: CSSUnits, private value: number) {}
+  constructor(private _measure: CSSUnits, private _value: number) {}
 
   toString(): string {
-    return `${this.value}${this.measure}`;
+    return `${this._value}${this._measure}`;
   }
 }
 
-export function run() {
-  const d = new Dimension(CSSUnits.pt, 35);
+export function pt(value: number): Dimension {
+  return new Dimension(CSSUnits.pt, value);
+}
 
-  console.log(d.toString());
+interface Style {
+  border: Border;
+}
+
+export const solid = 'solid';
+export const dotted = 'dotted';
+export const double = 'double';
+export const inherit = 'inherit';
+export const initial = 'initial';
+
+export interface Border {
+  top?: BorderSide;
+  right?: BorderSide;
+  bottom?: BorderSide;
+  left?: BorderSide;
+}
+
+export interface BorderSide {
+  style?: typeof solid|typeof dotted|typeof double|typeof inherit|
+      typeof initial;
+  width?: Dimension;
+}
+
+function style(...definitions: Style[]) {
+  definitions.forEach(def => console.dir(def));
+}
+
+export function run() {
+  style({border: {top: {width: pt(35), style: inherit}}});
 }
