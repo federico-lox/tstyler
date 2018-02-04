@@ -4,15 +4,14 @@
   "description": "TBD",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && npm run fix && npm run check && npm run compile",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "npm run compile-tests",
+    "test": "node ./build/test/main.test.js",
     "check": "gts check",
     "clean": "gts clean",
-    "compile": "tsc -p .",
+    "compile": "npm run fix && tsc -p tsconfig.json",
+    "compile-tests": "npm run fix && tsc -p tsconfig.test.json",
     "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run check"
+    "prepare": "npm run compile"
   },
   "keywords": [
     "typescript",
@@ -23,8 +22,8 @@
   "author": "Federico \"Lox\" Lucignano <federico-lox@outlook.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^9.4.0",
     "gts": "^0.5.3",
-    "typescript": "~2.6.1",
-    "@types/node": "^9.4.0"
+    "typescript": "^2.7.1"
   }
 }
