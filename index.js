@@ -1,3 +1,1 @@
-const main = require('./build/src/main.js');
-
-main.run();
+console.log('Not implemented.');
